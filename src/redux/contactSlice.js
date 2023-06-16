@@ -23,23 +23,11 @@ const contactSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(getContactsThunk.pending, handlePending)
       .addCase(getContactsThunk.fulfilled, handleAllContactSuccess)
-      .addCase(getContactsThunk.rejected, handleRejected)
-      .addCase(addContactThunk.pending, handlePending)
       .addCase(addContactThunk.fulfilled, handleAddContact)
-      .addCase(addContactThunk.rejected, handleRejected)
-      .addCase(deleteContactThunk.pending, handlePending)
       .addCase(deleteContactThunk.fulfilled, handleDeleteContact)
-      .addCase(deleteContactThunk.rejected, handleRejected);
-
-    // не спрацьовує лоадінг та помилки, якщо об'єднати через matcher
-    // .addMatcher(action => {
-    //   action.type.endsWith('/pending');
-    // }, handlePending);
-    // .addMatcher(action => {
-    //   action.type.endsWith('/rejected');
-    // }, handleError);
+      .addMatcher(action => action.type.endsWith('/pending'), handlePending)
+      .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },
 });
 
