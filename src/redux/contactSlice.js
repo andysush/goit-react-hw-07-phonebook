@@ -32,6 +32,8 @@ const contactSlice = createSlice({
       .addCase(deleteContactThunk.pending, handlePending)
       .addCase(deleteContactThunk.fulfilled, handleDeleteContact)
       .addCase(deleteContactThunk.rejected, handleRejected);
+
+    // не спрацьовує лоадінг та помилки, якщо об'єднати через matcher
     // .addMatcher(action => {
     //   action.type.endsWith('/pending');
     // }, handlePending);
