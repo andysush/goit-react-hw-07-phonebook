@@ -7,9 +7,9 @@ export const handleAllContactSuccess = (state, { payload }) => {
   state.isLoading = false;
   state.error = '';
 };
-export const handleRejected = (state, { error }) => {
+export const handleRejected = (state, payload) => {
   state.isLoading = false;
-  state.error = error;
+  state.error = payload;
 };
 
 export const handleAddContact = (state, { payload }) => {
